@@ -8,6 +8,21 @@ const App = () =>{  //function component
 export default App; 
 
 
+// const App2 =() =>{
+//   return(
+//     <h1>hello world</h1>
+//   )
+// }
+
+// export default App2;
+
+// const App3 = () =>{
+//   return(
+//     <h1>hello world</h1>
+//   )
+// }
+
+// export default App3;
 // sort cut 
 // import React from 'react'
 
@@ -26,10 +41,3 @@ export default App;
 
 // rafc
 // rafce 
-
-
-
-
-
-
-
