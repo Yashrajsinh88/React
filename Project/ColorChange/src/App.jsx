@@ -5,7 +5,7 @@ function App() {
   const [color, setColor] = useState("white"); 
 
   function handleColor(newColor) {
-    setColor(newColor); 
+    setColor(newColor);
   }
 
   return (

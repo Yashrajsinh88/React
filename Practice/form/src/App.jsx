@@ -2,14 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Controlled from "./components/Controlled";
+import Form from './components/Form'
 
 function App() {
-return (
- <>
- <Controlled/>
- </>
-)
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+<Form/>
+    </>
+  )
 }
 
 export default App
