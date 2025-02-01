@@ -9,6 +9,11 @@ const Form = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (userName == "" || email == "" || password == "" ) {
+      alert("please filled your form")
+      return;
+    }
+    // alert("succsesfully login")
   }
 
   return (
@@ -17,15 +22,15 @@ const Form = () => {
     <h2>Sign Up</h2>
     <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username</label>
-      <input type="text" id="username" name="username" placeholder="Enter your username"/>
+      <input type="text" id="username" value={userName} placeholder="Enter your username" onChange={() => setuserName(e.target.value)}/>
       <p></p>
       
       <label htmlFor="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email"/>
+      <input type="email" id="email" value={email} placeholder="Enter your email" onChange={() => setEmail(e.target.value)}/>
       <p></p>
       
       <label htmlFor="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password"/>
+      <input type="password" id="password" value={password} placeholder="Enter your password" onChange={() => setPassword(e.target.value)}/>
       <p></p>
       
       <button type="submit">Submit</button>
