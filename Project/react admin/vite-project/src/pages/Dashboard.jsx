@@ -1,88 +1,129 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { bidData } from "../data/bids";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (!loggedInUser) {
+    navigate("/");
+    return null;
+  }
+
+  const handleRespond = (bidId) => {
+    navigate(`/respond/${bidId}`);
+  };
+
+  const responseCount = (bidId) => {
+    const responses = JSON.parse(localStorage.getItem("responses")) || [];
+    return responses.filter((r) => r.bidId === bidId.toString()).length;
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     navigate("/");
   };
 
-  // Static bid data
-  const bids = [
-    {
-      id: "BID001",
-      createdBy: "Sunder Yadav",
-      startDate: "14/02/2024",
-      timeRemaining: "7hr 20min",
-      from: "Gurgaon",
-      to: "Mumbai",
-      vehicleType: "Truck, 20ft Close Body",
-      weight: "4000 Kg",
-      assignedStaff: "Mohit",
-    },
-    {
-      id: "BID002",
-      createdBy: "Rajesh Kumar",
-      startDate: "15/02/2024",
-      timeRemaining: "6hr 30min",
-      from: "Delhi",
-      to: "Pune",
-      vehicleType: "Truck, 22ft Open Body",
-      weight: "5000 Kg",
-      assignedStaff: "Rahul",
-    },
-  ];
-
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Live Bids</h1>
-        <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-          Logout
-        </button>
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <div className="w-full md:w-64 bg-blue-600 text-white p-6">
+        {/* <h2 className="text-2xl font-semibold mb-6">Dashboard</h2> */}
+        <img src="https://png.pngtree.com/png-clipart/20191120/original/pngtree-house-logo-designs-inspiration-isolated-on-white-background-png-image_5045077.jpg" className="text-xl mix-blend-color-burn size-40" alt="" />
+        <ul>
+          <li className="mb-4">
+            <button
+              onClick={() => navigate("/")}
+              className="text-white hover:bg-blue-700 px-4 py-2 rounded w-full text-left"
+            >
+              Home
+            </button>
+          </li>
+          <li className="mb-4">
+            <button
+              onClick={() => navigate("/bids")}
+              className="text-white hover:bg-blue-700 px-4 py-2 rounded w-full text-left"
+            >
+              Live Bids
+            </button>
+          </li>
+          <li className="mb-4">
+            <button
+              onClick={() => navigate("/settings")}
+              className="text-white hover:bg-blue-700 px-4 py-2 rounded w-full text-left"
+            >
+              Settings
+            </button>
+          </li>
+          <li className="mb-4">
+            <button
+              onClick={() => navigate("/profile")}
+              className="text-white hover:bg-blue-700 px-4 py-2 rounded w-full text-left"
+            >
+              Profile
+            </button>
+          </li>
+          <li className="mb-4">
+            <button
+              onClick={() => navigate("/contact")}
+              className="text-white hover:bg-blue-700 px-4 py-2 rounded w-full text-left"
+            >
+              Contact Us
+            </button>
+          </li>
+          <li className="mb-4">
+            <button
+              onClick={handleLogout}
+              className="text-white hover:bg-red-700 px-4 py-2 rounded w-full text-left"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
       </div>
-
-      <div className="bg-white p-6 rounded shadow">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="p-3 border">Bid No</th>
-              <th className="p-3 border">Created By</th>
-              <th className="p-3 border">Start Date</th>
-              <th className="p-3 border">Time Remaining</th>
-              <th className="p-3 border">From</th>
-              <th className="p-3 border">To</th>
-              <th className="p-3 border">Vehicle Type</th>
-              <th className="p-3 border">Weight</th>
-              <th className="p-3 border">Assigned Staff</th>
-              <th className="p-3 border">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bids.map((bid) => (
-              <tr key={bid.id} className="text-center">
-                <td className="p-3 border">{bid.id}</td>
-                <td className="p-3 border">{bid.createdBy}</td>
-                <td className="p-3 border">{bid.startDate}</td>
-                <td className="p-3 border">{bid.timeRemaining}</td>
-                <td className="p-3 border">{bid.from}</td>
-                <td className="p-3 border">{bid.to}</td>
-                <td className="p-3 border">{bid.vehicleType}</td>
-                <td className="p-3 border">{bid.weight}</td>
-                <td className="p-3 border">{bid.assignedStaff}</td>
-                <td className="p-3 border">
-                  <button
-                    className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                    onClick={() => navigate(`/bid/${bid.id}`)}
-                  >
-                    View
-                  </button>
-                </td>
+      
+      {/* Main content */}
+      <div className="flex-1 p-6 overflow-x-auto">
+        <h2 className="text-2xl font-semibold mb-4">Live Bids</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full bg-white shadow-lg rounded-lg text-sm md:text-base">
+            <thead>
+              <tr className="bg-blue-500 text-white">
+                <th className="p-2 md:p-3 border">Bid No</th>
+                <th className="p-2 md:p-3 border">Created By</th>
+                <th className="p-2 md:p-3 border">Start Date</th>
+                <th className="p-2 md:p-3 border">From</th>
+                <th className="p-2 md:p-3 border">To</th>
+                <th className="p-2 md:p-3 border">Vehicle Type</th>
+                <th className="p-2 md:p-3 border">Weight</th>
+                <th className="p-2 md:p-3 border">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {bidData.map((bid) => (
+                <tr key={bid.id} className="text-center border">
+                  <td className="p-2 md:p-3">{bid.id}</td>
+                  <td className="p-2 md:p-3">{bid.createdBy}</td>
+                  <td className="p-2 md:p-3">{bid.startDate}</td>
+                  <td className="p-2 md:p-3">{bid.from}</td>
+                  <td className="p-2 md:p-3">{bid.to}</td>
+                  <td className="p-2 md:p-3">{bid.vehicleType}</td>
+                  <td className="p-2 md:p-3">{bid.weight} Kg</td>
+                  <td className="p-2 md:p-3">
+                    <span>{responseCount(bid.id)}</span>
+                    <button
+                      onClick={() => handleRespond(bid.id)}
+                      className="bg-green-500 text-white px-3 py-1 md:px-4 md:py-2 rounded hover:bg-green-600 transition ml-2"
+                    >
+                      Respond
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
