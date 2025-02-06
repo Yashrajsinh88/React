@@ -1,1 +1,40 @@
-{}
+{
+  "products": [
+    {
+      "id": "099b",
+      "productName": "nike",
+      "category": "shoes",
+      "price": "123456"
+    },
+    {
+      "id": "8a84",
+      "productName": "adidas",
+      "category": "wall",
+      "price": "12345"
+    },
+    {
+      "id": "9da9",
+      "productName": "asd",
+      "category": "asdf",
+      "price": "5"
+    },
+    {
+      "id": "cae3",
+      "productName": "qqq",
+      "category": "ffff",
+      "price": "1234"
+    },
+    {
+      "id": "36d8",
+      "productName": "redtap",
+      "category": "shirt",
+      "price": "1234"
+    },
+    {
+      "id": "9b44",
+      "productName": "puma",
+      "category": "t-shirt",
+      "price": "2999"
+    }
+  ]
+}
