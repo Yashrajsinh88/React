@@ -14,6 +14,13 @@ function App() {
     setInputText("");
   }
 
+  function handleDelete(deleteId) {
+    // const deleteData = todoList.filter((anyname , i) => i != deleteId);  
+    // setTodoList(deleteData);
+
+    setTodoList(deleteData => deleteData.filter((anyname , i) => i !== deleteId)); //sort trick
+  }
+
   useEffect(() => {
     localStorage.setItem("todoData", JSON.stringify(todoList));
   },[todoList])
@@ -26,10 +33,14 @@ function App() {
       setInputText(e.target.value)
     }}/> 
      <button onClick={handleAdd}>Add</button>    
-     {todoList && todoList.map((element) => {
+
+
+     {todoList && todoList.map((element , index) => {
        return(
-        <div>
+        <div key={index}>
           <p>{element}</p>
+          <button onClick={() =>{handleDelete(index)}}>Delete</button>
+          <button>Edit</button>
         </div>
        )
      })}            
