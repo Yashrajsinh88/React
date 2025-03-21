@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "b25a",
+      "name": "yashrajsinh dodiya",
+      "email": "Y@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "b550",
+      "name": "Mast & Harbour",
+      "email": "yashraj@gmail.com",
+      "password": "654321",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": "2",
+      "name": "Laptop ABC",
+      "description": "Powerful laptop for professional use",
+      "price": 1299.99,
+      "image": "https://via.placeholder.com/300",
+      "category": "electronics"
+    },
+    {
+      "id": "3",
+      "name": "Headphones Pro",
+      "description": "Premium noise-canceling headphones",
+      "price": 299.99,
+      "image": "https://via.placeholder.com/300",
+      "category": "accessories"
+    },
+    {
+      "id": "9ddc",
+      "name": "Mast & Harbour",
+      "description": "Men White & Blue Ombre Dyed Casual Pure Cotton Shirt\n",
+      "price": 300,
+      "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/17356756/2024/8/8/2ee5e0e4-1706-461f-a353-248f28dc2ca81723123099912-Mast--Harbour-Men-White--Blue-Ombre-Dyed-Casual-Pure-Cotton--1.jpg",
+      "category": "clothing"
+    },
+    {
+      "id": "bc6b",
+      "name": "Mast & Harbour",
+      "description": "wjkl",
+      "price": 300,
+      "image": "https://via.placeholder.com/300",
+      "category": "clothing"
+    }
+  ],
+  "cart": [],
+  "userLogs": [
+    {
+      "id": "1742564986466",
+      "userId": "1",
+      "email": "admin@example.com",
+      "name": "Admin User",
+      "timestamp": "2025-03-21T13:49:46.466Z",
+      "status": "Active"
+    },
+    {
+      "id": "1742565001310",
+      "userId": "1",
+      "email": "admin@example.com",
+      "name": "Admin User",
+      "timestamp": "2025-03-21T13:50:01.310Z",
+      "status": "Logged Out"
+    },
+    {
+      "id": "1742565010642",
+      "userId": "b25a",
+      "email": "Y@gmail.com",
+      "name": "yashrajsinh dodiya",
+      "timestamp": "2025-03-21T13:50:10.642Z",
+      "status": "Active"
+    },
+    {
+      "id": "1742565014048",
+      "userId": "b25a",
+      "email": "Y@gmail.com",
+      "name": "yashrajsinh dodiya",
+      "timestamp": "2025-03-21T13:50:14.048Z",
+      "status": "Logged Out"
+    },
+    {
+      "id": "1742565048477",
+      "userId": "b550",
+      "email": "yashraj@gmail.com",
+      "name": "Mast & Harbour",
+      "timestamp": "2025-03-21T13:50:48.477Z",
+      "status": "Logged Out"
+    },
+    {
+      "id": "1742565058370",
+      "userId": "1",
+      "email": "admin@example.com",
+      "name": "Admin User",
+      "timestamp": "2025-03-21T13:50:58.370Z",
+      "status": "Active"
+    }
+  ]
+}
